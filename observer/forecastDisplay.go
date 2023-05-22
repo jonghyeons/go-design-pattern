@@ -11,6 +11,11 @@ type ForecastDisplay struct {
 	WeatherData     *WeatherData
 }
 
+var (
+	_ Observer       = (*ForecastDisplay)(nil)
+	_ DisplayElement = (*ForecastDisplay)(nil)
+)
+
 func (fd *ForecastDisplay) Init(wd *WeatherData) {
 	fd.WeatherData = wd
 	fd.WeatherData.RegisterObserver(fd)
